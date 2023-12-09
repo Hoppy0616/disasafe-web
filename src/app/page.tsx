@@ -1,10 +1,13 @@
 "use client"
 
+import Link from 'next/link'
+
 import Image from 'next/image'
 
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api"
+import React, { useState, useEffect } from 'react'
 
-
+import style from 'src/app/styles/common.module.css'
 
 const containerStyle = {
   height: "100vh",
@@ -17,29 +20,51 @@ const center = {
 }
 
 const positionAkiba = {
-  lat: 35.69731,
-  lng: 139.7747,
+  lat: 26.2030332,
+  lng: 127.8169709
+  ,
 }
 
 const positionIwamotocho = {
-  lat: 35.69397,
-  lng: 139.7762,
+  lat: 26.3730332,
+  lng: 127.7169709
+  ,
 }
 
 export default function Home() {
+  const [coords, setCoords] = useState({latitude: 0, longitude: 0})
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setCoords({latitude: position.coords.latitude, longitude: position.coords.longitude})
+      },
+      (error) => console.log(error),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
+  }, [])
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-
-
+    
+    <main className="flex min-h-screen flex-col items-center justify-between" style={{position:'relative'}}>
+      <Link href="/about" style={{
+         position: "absolute",
+         zIndex: 999,
+         right: 'calc(50%-40px)',
+         bottom: 20,
+         }} >
+        <Image src={"/images/post1.png"} alt="投稿画面へ" height={80} width={80}/>
+      </Link>
       <LoadScript googleMapsApiKey="AIzaSyAVPsOx5qu0HQarewYdPiIovz49PD8-Uck">
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}>
+        <GoogleMap mapContainerStyle={containerStyle} center={{lat: coords.latitude, lng: coords.longitude}} zoom={10}>
+          <MarkerF position={{lat: coords.latitude, lng: coords.longitude}} label='me'>
+          </MarkerF>
           <MarkerF position={positionAkiba} icon={"/images/post1.png"}>
           </MarkerF>
           <MarkerF position={positionIwamotocho} icon={"/images/post2.png"}>
           </MarkerF>
         </GoogleMap>
       </LoadScript>
-
+      
     </main>
   )
 }
