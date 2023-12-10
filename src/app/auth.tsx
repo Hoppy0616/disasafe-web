@@ -1,9 +1,7 @@
-
+/*
 import styles from './styles/common.module.css'
 import { getAuth, createUserWithEmailAndPassword, SignInMethod, signInWithEmailAndPassword } from "firebase/auth"
 
-import { Col, Container, Form, FormGroup, Input, Label, Row, Button } from "react";
-import { useState } from 'react';
 
 import Link from 'next/link'
 import { useRouter } from  'next/router'
@@ -30,7 +28,7 @@ export default function Login () {
         .catch((error) => {
             console.log(error);
         });
-    }*/
+    }
     return (
         <div className={styles.card}>
         <h1>新規登録</h1>
@@ -68,3 +66,4 @@ export default function Login () {
       </div>
     )
   }
+  */
