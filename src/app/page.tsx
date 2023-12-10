@@ -124,7 +124,7 @@ export default function Home() {
   return (
     
     <main className="flex min-h-screen flex-col items-center justify-between" style={{position:'relative'}}>
-      <Link href="/about" style={{
+      <Link href="/post" style={{
          position: "absolute",
          zIndex: 999,
          right: 'calc(50%-40px)',
