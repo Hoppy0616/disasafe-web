@@ -4,10 +4,24 @@ import Link from 'next/link'
 
 import Image from 'next/image'
 
-import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api"
+import { GoogleMap, LoadScript, MarkerF, Circle } from "@react-google-maps/api"
 import React, { useState, useEffect } from 'react'
 
 import style from 'src/app/styles/common.module.css'
+
+const circleOptions = {
+  strokeColor: "#FF0000",
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: "#FF0000",
+  fillOpacity: 0.35,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  visible: true,
+  radius: 30000,
+  zIndex: 1,
+};
 
 const containerStyle = {
   height: "100vh",
@@ -52,11 +66,11 @@ export default function Home() {
          right: 'calc(50%-40px)',
          bottom: 20,
          }} >
-        <Image src={"/images/post1.png"} alt="投稿画面へ" height={80} width={80}/>
+        <Image src={"/images/submit.png"} alt="投稿画面へ" height={80} width={80}/>
       </Link>
       <LoadScript googleMapsApiKey="AIzaSyAVPsOx5qu0HQarewYdPiIovz49PD8-Uck">
         <GoogleMap mapContainerStyle={containerStyle} center={{lat: coords.latitude, lng: coords.longitude}} zoom={10}>
-          <MarkerF position={{lat: coords.latitude, lng: coords.longitude}} label='me'>
+          <MarkerF position={{lat: coords.latitude, lng: coords.longitude}} icon={"/images/user.png"}>
           </MarkerF>
           <MarkerF position={positionAkiba} icon={"/images/post1.png"}>
           </MarkerF>
