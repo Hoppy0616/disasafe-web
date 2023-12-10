@@ -12,10 +12,12 @@ interface IconListProps {
 
 const IconList: React.FC<IconListProps> = ({ src, alt,url }) => {
     return (
-        <Link href={`/post/${url}`}>
-            <Image src={src} alt={alt} width={100} height={100} />
-            <p className='text-center mt-2'>{alt}</p>
-        </Link>
+        <div className='inline-block'>
+            <Link href={`/post/${url}`} className='inline-block'>
+                <Image src={src} alt={alt} width={100} height={100} className='inline-block'/>
+                <p className='text-center mt-2'>{alt}</p>
+            </Link>
+        </div>
     );
 };
 
