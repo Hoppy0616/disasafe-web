@@ -8,8 +8,8 @@ const insertPost = async () => {
 const Post = () => {
     return(
         <div className="h-full grid grid-cols-3 gap-4 place-items-center h-4/5">
-            <IconList src="/images/post1.png" alt="icon1" url=""/>
-            <IconList src="/images/post2.png" alt="icon2" url=""/>
+            <IconList src="/images/post1.png" alt="icon1" url="" />
+            <IconList src="/images/post2.png" alt="icon2" url="" />
             <IconList src="/images/post3.png" alt="icon3" url="" />
             <IconList src="/images/post4.png" alt="icon4" url="" />
             <IconList src="/images/post5.png" alt="icon5" url="" />
